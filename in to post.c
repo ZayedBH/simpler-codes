@@ -17,7 +17,8 @@ void convert(char infix[], char postfix[]) {
         else if (infix[i] == '(')  // Left parenthesis
             stack[++top] = infix[i];
         else if (infix[i] == ')') {  // Right parenthesis
-            while (top >= 0 && stack[top] != '(') postfix[j++] = stack[top--];
+            while (top >= 0 && stack[top] != '(') 
+            postfix[j++] = stack[top--];
             top--;
         } else {  // Operator
             while (top >= 0 && precedence(infix[i]) <= precedence(stack[top]) && stack[top] != '(')
