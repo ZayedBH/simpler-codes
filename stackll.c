@@ -8,12 +8,10 @@ typedef struct Node {
 
 typedef struct {
     Node *top;
-    int size;
 } Stack;
 
 void initialize(Stack *s) {
     s->top = NULL;
-    s->size = 0;
 }
 
 int isEmpty(Stack *s) {
@@ -29,7 +27,6 @@ void push(Stack *s, int item) {
     newNode->data = item;
     newNode->next = s->top;
     s->top = newNode;
-    s->size++;
     printf("Pushed %d onto the stack.\n", item);
 }
 
@@ -41,7 +38,6 @@ void pop(Stack *s) {
         printf("Popped %d from the stack.\n", temp->data);
         s->top = s->top->next;
         free(temp);
-        s->size--;
     }
 }
 
@@ -66,47 +62,40 @@ void display(Stack *s) {
     }
 }
 
-void menu() {
+int main() {
     Stack s;
-    int choice, item;
-    
     initialize(&s);
-    
+    int choice, item;
+
     while (1) {
         printf("\nStack Menu:\n");
-        printf("1. Initialize Stack\n");
-        printf("2. Push\n");
-        printf("3. Pop\n");
-        printf("4. Peek\n");
-        printf("5. Display Stack\n");
-        printf("6. Exit\n");
-        
-        printf("Enter your choice (1-6): ");
+        printf("1. Push\n");
+        printf("2. Pop\n");
+        printf("3. Peek\n");
+        printf("4. Display Stack\n");
+        printf("5. Exit\n");
+
+        printf("Enter your choice (1-5): ");
         scanf("%d", &choice);
-        
+
         if (choice == 1) {
-            initialize(&s);
-            printf("Stack has been initialized.\n");
-        } else if (choice == 2) {
             printf("Enter the item to push: ");
             scanf("%d", &item);
             push(&s, item);
-        } else if (choice == 3) {
+        } else if (choice == 2) {
             pop(&s);
-        } else if (choice == 4) {
+        } else if (choice == 3) {
             peek(&s);
-        } else if (choice == 5) {
+        } else if (choice == 4) {
             display(&s);
-        } else if (choice == 6) {
+        } else if (choice == 5) {
             printf("Exiting the program.\n");
             exit(0);
         } else {
-            printf("Invalid choice. Please choose a number between 1 and 6.\n");
+            printf("Invalid choice. Please choose a number between 1 and 5.\n");
         }
     }
-}
 
-int main() {
-    menu();
     return 0;
 }
+
