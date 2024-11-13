@@ -5,7 +5,7 @@ import javax.swing.*;
 
 class Calc implements ActionListener {
     JButton bmul, bdiv, badd, bsub;
-    JLabel l1, l2, l3, l4;
+    JLabel l1, l2;
     JTextField t1, t2;
     JFrame f;
 
@@ -13,8 +13,6 @@ class Calc implements ActionListener {
         f = new JFrame("Calculator");
         l1 = new JLabel("no 1");
         l2 = new JLabel("no 2");
-        l3 = new JLabel("C");
-        l4 = new JLabel(" ");
         t1 = new JTextField(16);
         t2 = new JTextField(16);
 
