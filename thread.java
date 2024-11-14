@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 class FactorialThread extends Thread {
     public FactorialThread(int number) {
         long factorial = 1;
@@ -18,14 +20,19 @@ class SumThread extends Thread {
     }
 }
 
-class MultiThreadExample {
+public class MultiThreadExample {
     public static void main(String[] args) {
-        int number = 5;
+        Scanner s = new Scanner(System.in);
+
+        System.out.print("Enter a number: ");
+        int number = s.nextInt();
 
         FactorialThread factorialThread = new FactorialThread(number);
         SumThread sumThread = new SumThread(number);
 
         factorialThread.start();
         sumThread.start();
+
+        s.close();
     }
 }
